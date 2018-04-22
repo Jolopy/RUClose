@@ -54,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
         idsRef.child("351db15961baf8f0").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if(!(snapshot.child("UID").getValue() == null)){
-                    String uid = snapshot.child("UID").getValue().toString();
+                if(!(snapshot.child("uid").getValue() == null)){
+                    String uid = snapshot.child("uid").getValue().toString();
                     String line = snapshot.child("line").getValue().toString();
 
                     Intent myIntent = new Intent(MainActivity.this, CheckInPopUp.class);
-                    myIntent.putExtra("UID",uid).putExtra("line",line);
+                    myIntent.putExtra("dui",uid).putExtra("line",line);
                     startActivity(myIntent);
 
                     idsRef.child("351db15961baf8f0").removeValue();
@@ -71,11 +71,41 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initial_upvote(String uid){
+    private void initial_upvote(final String uid){
 
-        System.out.println(mainRef.orderByChild("uid").equalTo(uid));
+        mainRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                int curUp = Integer.valueOf(snapshot.child("up").getValue().toString());
+                curUp += 1;
 
-        //mainRef.child()
+
+                mainRef.child(uid).child("up").setValue(curUp);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void downvote(final String uid){
+
+        mainRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                int curUp = Integer.valueOf(snapshot.child("up").getValue().toString());
+                curUp -= 1;
+
+                int curDown = Integer.valueOf(snapshot.child("down").getValue().toString());
+                curDown += 1;
+                mainRef.child(uid).child("down").setValue(curDown);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
 
@@ -142,39 +172,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                mainRef.child(top1.getTag().toString()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        int curUp = Integer.valueOf(snapshot.child("up").getValue().toString());
-                        curUp += 1;
-
-                        System.out.println(curUp);
-                        mainRef.child(top1.getTag().toString()).child("up").setValue(curUp);
-
-
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
-
-
-
-
                 Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
 
+                initial_upvote(top1.getTag().toString());
                 HashMap<String, Object> result = new HashMap<>();
                 result.put("UID", top1.getTag());
                 result.put("line", top1.getText());
 
                 idsRef.child(get_user_id()).setValue(result);
-
-
-                //initial_upvote();
-
             }
         });
 
