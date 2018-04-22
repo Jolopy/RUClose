@@ -1,11 +1,13 @@
 package com.example.cczec.ruclose;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,11 +16,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.regex.Pattern;
-import android.util.Patterns;
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.content.Context;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,26 +26,19 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.concurrent.TimeoutException;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private void get_email_list(){
-        Log.w("get_email_list()", "Running");
         Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
         Context context = this;
         Account[] accounts = AccountManager.get(context).getAccounts();
         for (Account account : accounts) {
             if (emailPattern.matcher(account.name).matches()) {
                 String possibleEmail = account.name;
-                System.out.println("email:" + possibleEmail);
-                Log.w("email", possibleEmail);
-
             }
         }
-
-
-
     }
 
 
@@ -105,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
-                get_email_list();
             }
         });
 
@@ -285,7 +274,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         ///////////////////////////////////////////////////////////
         // Up Votes
@@ -508,7 +496,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 
 
 }
