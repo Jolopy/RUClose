@@ -34,6 +34,10 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseDatabase database;
+    DatabaseReference topRef;
+    DatabaseReference idsRef;
+
     private String get_user_id(){
 
         String android_id = Settings.Secure.getString(this.getContentResolver(),
@@ -42,17 +46,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private String get_pending_items(){
+    private void check_pending_items(){
         String uid = get_user_id();
         // send call to firebase
-        return "";
+        idsRef.child("a").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if(!(snapshot.child("UID").getValue() == null)){
+                    String uid = snapshot.child("UID").getValue().toString();
+                    String line = snapshot.child("line").getValue().toString();
+
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        database = FirebaseDatabase.getInstance();
+        topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/top_pickuplines");
+        idsRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/android_ids");
 
         final TextView top1 =  (TextView) findViewById(R.id.top1);
         final TextView top2 =  (TextView) findViewById(R.id.top2);
@@ -87,13 +109,12 @@ public class MainActivity extends AppCompatActivity {
         final TextView submit4 = (TextView)findViewById(R.id.submit4);
 
 
+        check_pending_items();
 
 
 
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/top_pickuplines");
 
 
         ///////////////////////////////////////////////////////////
@@ -108,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
                 //get_email_list();
+
             }
         });
 
