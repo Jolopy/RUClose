@@ -1,14 +1,8 @@
 package com.example.cczec.ruclose;
 
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -32,23 +26,6 @@ import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    public void doSometing(){
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        int notifyId = 1;
-        String channelId = "some_channel_id";
-
-        Notification notification = new Notification.Builder(MainActivity.this)
-                .setContentTitle("Some Message")
-                .setContentText("You've received new messages!")
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setChannelId(channelId)
-                .build();
-
-        notificationManager.notify(notifyId, notification);
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,20 +60,8 @@ public class MainActivity extends AppCompatActivity {
         final TextView down8 = (TextView)findViewById(R.id.top8votesdown);
 
 
-        //notification test
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            // Create the NotificationChannel, but only on API 26+ because
-//            // the NotificationChannel class is new and not in the support library
-//            CharSequence name = getString(R.string.channel_name);
-//            String description = getString(R.string.channel_description);
-//            int importance = NotificationManagerCompat.IMPORTANCE_DEFAULT;
-//            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-//            channel.setDescription(description);
-//            // Register the channel with the system
-//            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-//            notificationManager.createNotificationChannel(channel);
-//        }
+
 
 
 
@@ -111,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         top1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doSometing();
                 Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
