@@ -51,9 +51,12 @@ public class MainActivity extends AppCompatActivity {
     private void check_pending_items(){
         String uid = get_user_id();
         // send call to firebase
-        idsRef.child("351db15961baf8f0").addValueEventListener(new ValueEventListener() {
+        //System.out.println(uid);
+
+        idsRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                //System.out.println(snapshot.child("uid").getValue());
                 if(!(snapshot.child("uid").getValue() == null)){
                     String uid = snapshot.child("uid").getValue().toString();
                     String line = snapshot.child("line").getValue().toString();
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     myIntent.putExtra("dui",uid).putExtra("line",line);
                     startActivity(myIntent);
 
-                    idsRef.child("351db15961baf8f0").removeValue();
+                    idsRef.child(get_user_id()).removeValue();
                 }
             }
             @Override
@@ -154,7 +157,9 @@ public class MainActivity extends AppCompatActivity {
         final TextView submit4 = (TextView)findViewById(R.id.submit4);
 
 
-        check_pending_items();
+
+
+
 
 
 
@@ -179,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
 
                 initial_upvote(top1.getTag().toString());
                 HashMap<String, Object> result = new HashMap<>();
-                result.put("UID", top1.getTag());
+                result.put("uid", top1.getTag());
                 result.put("line", top1.getText());
 
                 idsRef.child(get_user_id()).setValue(result);
@@ -193,6 +198,13 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top2.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top2.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top2.getTag());
+                result.put("line", top2.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -203,6 +215,13 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top3.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top3.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top3.getTag());
+                result.put("line", top3.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -213,6 +232,13 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top4.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top4.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top4.getTag());
+                result.put("line", top4.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -223,6 +249,13 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top5.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top5.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top5.getTag());
+                result.put("line", top5.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -233,6 +266,13 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top6.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top6.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top6.getTag());
+                result.put("line", top6.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -243,6 +283,13 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top7.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top7.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top7.getTag());
+                result.put("line", top7.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -253,6 +300,13 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top8.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top8.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top8.getTag());
+                result.put("line", top8.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -273,11 +327,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("1").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child("1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top2.setText(value);
+                top2.setText(dataSnapshot.child("line").getValue().toString());
+                top2.setTag(dataSnapshot.child("uid").getValue().toString());
             }
 
             @Override
@@ -286,11 +340,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("2").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child("2").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top3.setText(value);
+                top3.setText(dataSnapshot.child("line").getValue().toString());
+                top3.setTag(dataSnapshot.child("uid").getValue().toString());
             }
 
             @Override
@@ -299,11 +353,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("3").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child("3").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top4.setText(value);
+                top4.setText(dataSnapshot.child("line").getValue().toString());
+                top4.setTag(dataSnapshot.child("uid").getValue().toString());
             }
 
             @Override
@@ -312,11 +366,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("4").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child("4").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top5.setText(value);
+                top5.setText(dataSnapshot.child("line").getValue().toString());
+                top5.setTag(dataSnapshot.child("uid").getValue().toString());
             }
 
             @Override
@@ -325,11 +379,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("5").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child("5").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top6.setText(value);
+                top6.setText(dataSnapshot.child("line").getValue().toString());
+                top6.setTag(dataSnapshot.child("uid").getValue().toString());
             }
 
             @Override
@@ -338,11 +392,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("6").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child("6").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top7.setText(value);
+                top7.setText(dataSnapshot.child("line").getValue().toString());
+                top7.setTag(dataSnapshot.child("uid").getValue().toString());
             }
 
             @Override
@@ -351,11 +405,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("7").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child("7").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top8.setText(value);
+                top8.setText(dataSnapshot.child("line").getValue().toString());
+                top8.setTag(dataSnapshot.child("uid").getValue().toString());
             }
 
             @Override
@@ -594,5 +648,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        check_pending_items();
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        check_pending_items();
     }
 }
