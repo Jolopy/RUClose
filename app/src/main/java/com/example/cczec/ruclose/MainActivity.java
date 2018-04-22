@@ -6,8 +6,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,22 +28,23 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
-    private void get_email_list(){
-        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-        Context context = this;
-        Account[] accounts = AccountManager.get(context).getAccounts();
-        System.out.println("in test");
-        for (Account account : accounts) {
-            System.out.println(account.name);
-            if (emailPattern.matcher(account.name).matches()) {
-                String possibleEmail = account.name;
-            }
-        }
+    private String get_user_id(){
+
+        String android_id = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        return android_id;
+    }
+
+
+    private String get_pending_items(){
+        String uid = get_user_id();
+        // send call to firebase
     }
 
 
