@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
         Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
         Context context = this;
         Account[] accounts = AccountManager.get(context).getAccounts();
+        System.out.println("in test");
         for (Account account : accounts) {
+            System.out.println(account.name);
             if (emailPattern.matcher(account.name).matches()) {
                 String possibleEmail = account.name;
             }
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+                get_email_list();
             }
         });
 
