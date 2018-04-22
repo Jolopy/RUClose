@@ -49,13 +49,18 @@ public class MainActivity extends AppCompatActivity {
     private void check_pending_items(){
         String uid = get_user_id();
         // send call to firebase
-        idsRef.child("a").addValueEventListener(new ValueEventListener() {
+        idsRef.child("351db15961baf8f0").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if(!(snapshot.child("UID").getValue() == null)){
                     String uid = snapshot.child("UID").getValue().toString();
                     String line = snapshot.child("line").getValue().toString();
 
+                    Intent myIntent = new Intent(MainActivity.this, CheckInPopUp.class);
+                    myIntent.putExtra("UID",uid).putExtra("line",line);
+                    startActivity(myIntent);
+
+                    idsRef.child("351db15961baf8f0").removeValue();
                 }
             }
             @Override

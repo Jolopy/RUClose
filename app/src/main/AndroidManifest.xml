@@ -26,7 +26,11 @@
             android:name=".RandomActivity"
             android:label="RandomActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".CheckInPopUp"
+            android:label="CheckInPopUp"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.PopUp"/>
 
     </application>
 
