@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private String get_pending_items(){
         String uid = get_user_id();
         // send call to firebase
+        return "";
     }
 
 
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
-                get_email_list();
+                //get_email_list();
             }
         });
 
