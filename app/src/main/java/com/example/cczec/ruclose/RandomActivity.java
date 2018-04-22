@@ -32,19 +32,7 @@ import java.util.regex.Pattern;
 
 public class RandomActivity extends AppCompatActivity {
 
-    private void get_email_list(){
-        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-        Context context = this;
-        Account[] accounts = AccountManager.get(context).getAccounts();
-        System.out.println("in test");
-        for (Account account : accounts) {
-            System.out.println(account.name);
-            if (emailPattern.matcher(account.name).matches()) {
-                String possibleEmail = account.name;
-            }
-        }
-    }
-
+    public int randomRange,random1,random2,random3,random4,random5,random6,random7,random8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,18 +71,45 @@ public class RandomActivity extends AppCompatActivity {
         final TextView randomsubmit2 =  (TextView) findViewById(R.id.randomsubmit2);
         final TextView randomsubmit4 =  (TextView) findViewById(R.id.randomsubmit4);
 
-        final int random1 = new Random().nextInt(1000);
-        final int random2 = new Random().nextInt(1000);
-        final int random3 = new Random().nextInt(1000);
-        final int random4 = new Random().nextInt(1000);
-        final int random5 = new Random().nextInt(1000);
-        final int random6 = new Random().nextInt(1000);
-        final int random7 = new Random().nextInt(1000);
-        final int random8 = new Random().nextInt(1000);
-
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
+
+        topRef.child("linenumber").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                randomRange = dataSnapshot.getValue(Integer.class);
+                System.out.println(randomRange);
+                random1 = new Random().nextInt(randomRange);
+                random2 = new Random().nextInt(randomRange);
+                random3 = new Random().nextInt(randomRange);
+                random4 = new Random().nextInt(randomRange);
+                random5 = new Random().nextInt(randomRange);
+                random6 = new Random().nextInt(randomRange);
+                random7 = new Random().nextInt(randomRange);
+                random8 = new Random().nextInt(randomRange);
+                updateShit();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        topRef.child("linenumber").removeEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
 
         ///////////////////////////////////////////////////////////
@@ -108,7 +123,6 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
-                get_email_list();
             }
         });
 
@@ -182,9 +196,67 @@ public class RandomActivity extends AppCompatActivity {
             }
         });
 
+
+
+        randomsubmit4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RandomActivity.this, SubmitActivity.class));
+
+            }
+        });
+        randomsubmit1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RandomActivity.this, MainActivity.class));
+
+            }
+        });
+
+        randomsubmit2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RandomActivity.this, RandomActivity.class));
+
+            }
+        });
+
+    }
+    private void updateShit(){
         ///////////////////////////////////////////////////////////
         // Get Text
         ///////////////////////////////////////////////////////////
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
+
+        final TextView top1 =  (TextView) findViewById(R.id.top1);
+        final TextView top2 =  (TextView) findViewById(R.id.top2);
+        final TextView top3 =  (TextView) findViewById(R.id.top3);
+        final TextView top4 =  (TextView) findViewById(R.id.top4);
+        final TextView top5 =  (TextView) findViewById(R.id.top5);
+        final TextView top6 =  (TextView) findViewById(R.id.top6);
+        final TextView top7 =  (TextView) findViewById(R.id.top7);
+        final TextView top8 =  (TextView) findViewById(R.id.top8);
+
+        final TextView up1 = (TextView)findViewById(R.id.top1votesup);
+        final TextView up2 = (TextView)findViewById(R.id.top2votesup);
+        final TextView up3 = (TextView)findViewById(R.id.top3votesup);
+        final TextView up4 = (TextView)findViewById(R.id.top4votesup);
+        final TextView up5 = (TextView)findViewById(R.id.top5votesup);
+        final TextView up6 = (TextView)findViewById(R.id.top6votesup);
+        final TextView up7 = (TextView)findViewById(R.id.top7votesup);
+        final TextView up8 = (TextView)findViewById(R.id.top8votesup);
+
+        final TextView down1 = (TextView)findViewById(R.id.top1votesdown);
+        final TextView down2 = (TextView)findViewById(R.id.top2votesdown);
+        final TextView down3 = (TextView)findViewById(R.id.top3votesdown);
+        final TextView down4 = (TextView)findViewById(R.id.top4votesdown);
+        final TextView down5 = (TextView)findViewById(R.id.top5votesdown);
+        final TextView down6 = (TextView)findViewById(R.id.top6votesdown);
+        final TextView down7 = (TextView)findViewById(R.id.top7votesdown);
+        final TextView down8 = (TextView)findViewById(R.id.top8votesdown);
+
+
         topRef.child(String.valueOf(random1)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -503,28 +575,6 @@ public class RandomActivity extends AppCompatActivity {
 
             }
         });
-
-        randomsubmit4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RandomActivity.this, SubmitActivity.class));
-
-            }
-        });
-        randomsubmit1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RandomActivity.this, MainActivity.class));
-
-            }
-        });
-
-        randomsubmit2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RandomActivity.this, RandomActivity.class));
-
-            }
-        });
     }
+
 }

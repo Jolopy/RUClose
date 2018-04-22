@@ -44,7 +44,6 @@ public class SubmitActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editSubmit);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference sendRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/1");
 
         final DatabaseReference numberRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
 
@@ -89,13 +88,12 @@ public class SubmitActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String value = editText.getText().toString();
-                sendRef.child(String.valueOf(pickupNumber)).child("line").setValue(value);
-                sendRef.child(String.valueOf(pickupNumber)).child("up").setValue(0);
-                sendRef.child(String.valueOf(pickupNumber)).child("down").setValue(0);
-                sendRef.child(String.valueOf(pickupNumber)).child("uid").setValue(String.valueOf(pickupNumber));
+                numberRef.child(String.valueOf(pickupNumber)).child("line").setValue(value);
+                numberRef.child(String.valueOf(pickupNumber)).child("up").setValue(0);
+                numberRef.child(String.valueOf(pickupNumber)).child("down").setValue(0);
+                numberRef.child(String.valueOf(pickupNumber)).child("uid").setValue(String.valueOf(pickupNumber));
                 numberRef.child("linenumber").setValue(pickupNumber + 1);
                 Toast.makeText(SubmitActivity.this, "You have Submitted your Pick Up Line", Toast.LENGTH_SHORT).show();
-
 
             }
         });

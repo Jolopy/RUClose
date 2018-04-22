@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:text="first pick up line"
+        android:text="Loading..."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
     <LinearLayout
@@ -66,28 +66,32 @@
 
         <ImageButton
             android:id="@+id/top1up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/up" />
 
         <TextView
             android:id="@+id/top1votesup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/top1down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_down_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/down" />
 
         <TextView
             android:id="@+id/top1votesdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -98,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:text="first pick up line"
+        android:text="Loading..."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
     <LinearLayout
@@ -109,27 +113,32 @@
 
         <ImageButton
             android:id="@+id/top2up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/up" />
 
         <TextView
             android:id="@+id/top2votesup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/top2down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_down_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/down" />
+
         <TextView
             android:id="@+id/top2votesdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -140,7 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:text="first pick up line"
+        android:text="Loading..."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
     <LinearLayout
@@ -151,26 +160,32 @@
 
         <ImageButton
             android:id="@+id/top3up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/up" />
+
         <TextView
             android:id="@+id/top3votesup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/top3down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_down_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/down" />
+
         <TextView
             android:id="@+id/top3votesdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -181,7 +196,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:text="first pick up line"
+        android:text="Loading..."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
     <LinearLayout
@@ -192,26 +207,32 @@
 
         <ImageButton
             android:id="@+id/top4up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/up" />
+
         <TextView
             android:id="@+id/top4votesup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/top4down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_down_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/down" />
+
         <TextView
             android:id="@+id/top4votesdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -222,7 +243,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:text="first pick up line"
+        android:text="Loading..."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
     <LinearLayout
@@ -233,26 +254,32 @@
 
         <ImageButton
             android:id="@+id/top5up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/up" />
+
         <TextView
             android:id="@+id/top5votesup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/top5down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_down_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/down" />
+
         <TextView
             android:id="@+id/top5votesdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -263,7 +290,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:text="first pick up line"
+        android:text="Loading..."
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textAlignment="center" />
     <LinearLayout
@@ -274,26 +301,32 @@
 
         <ImageButton
             android:id="@+id/top6up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/up" />
+
         <TextView
             android:id="@+id/top6votesup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/top6down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_down_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/down" />
+
         <TextView
             android:id="@+id/top6votesdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -304,7 +337,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:text="first pick up line"
+        android:text="Loading..."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
     <LinearLayout
@@ -315,26 +348,32 @@
 
         <ImageButton
             android:id="@+id/top7up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/up" />
+
         <TextView
             android:id="@+id/top7votesup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/top7down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_down_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/down" />
+
         <TextView
             android:id="@+id/top7votesdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -345,7 +384,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:text="first pick up line"
+        android:text="Loading..."
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
     <LinearLayout
@@ -356,26 +395,32 @@
 
         <ImageButton
             android:id="@+id/top8up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/up" />
+
         <TextView
             android:id="@+id/top8votesup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
         <ImageButton
             android:id="@+id/top8down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_down_float" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/down" />
+
         <TextView
             android:id="@+id/top8votesdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="0"
             android:layout_gravity="center"/>
 
     </LinearLayout>
