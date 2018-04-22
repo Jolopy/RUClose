@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -75,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
         final TextView down6 = (TextView)findViewById(R.id.top6votesdown);
         final TextView down7 = (TextView)findViewById(R.id.top7votesdown);
         final TextView down8 = (TextView)findViewById(R.id.top8votesdown);
+
+
+        final Button submit1 = (Button)findViewById(R.id.submit1);
+        final Button submit2 = (Button)findViewById(R.id.submit2);
+        final Button submit3 = (Button)findViewById(R.id.submit3);
+        final Button submit4 = (Button)findViewById(R.id.submit4);
 
 
 
@@ -281,11 +288,11 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////////////////////////////////////
         // Up Votes
         ///////////////////////////////////////////////////////////
-        /**topRef.child("1").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child("1").child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Long role = (Long) dataSnapshot.getValue();
-                up1.setText(String.valueOf(role));
+                int value = dataSnapshot.getValue(Integer.class);
+                up1.setText(String.valueOf(value));
             }
 
             @Override
@@ -299,8 +306,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("2").child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                up2.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                up2.setText(String.valueOf(value));
             }
 
             @Override
@@ -312,8 +319,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("3").child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                up3.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                up3.setText(String.valueOf(value));
             }
 
             @Override
@@ -325,8 +332,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("4").child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                up4.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                up4.setText(String.valueOf(value));
             }
 
             @Override
@@ -338,8 +345,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("5").child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                up5.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                up5.setText(String.valueOf(value));
             }
 
             @Override
@@ -351,8 +358,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("6").child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                up6.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                up6.setText(String.valueOf(value));
             }
 
             @Override
@@ -364,8 +371,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("7").child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                up7.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                up7.setText(String.valueOf(value));
             }
 
             @Override
@@ -377,8 +384,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("8").child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                up8.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                up8.setText(String.valueOf(value));
             }
 
             @Override
@@ -392,8 +399,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("1").child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                down1.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                down1.setText(String.valueOf(value));
             }
 
             @Override
@@ -405,8 +412,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("2").child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                down2.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                down2.setText(String.valueOf(value));
             }
 
             @Override
@@ -418,8 +425,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("3").child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                down3.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                down3.setText(String.valueOf(value));
             }
 
             @Override
@@ -431,8 +438,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("4").child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                down4.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                down4.setText(String.valueOf(value));
             }
 
             @Override
@@ -444,8 +451,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("5").child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                down5.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                down5.setText(String.valueOf(value));
             }
 
             @Override
@@ -457,8 +464,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("6").child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                down6.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                down6.setText(String.valueOf(value));
             }
 
             @Override
@@ -470,8 +477,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("7").child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                down7.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                down7.setText(String.valueOf(value));
             }
 
             @Override
@@ -483,8 +490,8 @@ public class MainActivity extends AppCompatActivity {
         topRef.child("8").child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int value =  dataSnapshot.getValue(int.class);
-                down8.setText(value);
+                int value = dataSnapshot.getValue(Integer.class);
+                down8.setText(String.valueOf(value));
             }
 
             @Override
@@ -492,13 +499,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        **/
 
+        submit4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SubmitActivity.class));
 
-
-
-
+            }
+        });
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.example.cczec.ruclose;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class SubmitActivity extends AppCompatActivity {
 
 
     public int pickupNumber;
+    EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +41,14 @@ public class SubmitActivity extends AppCompatActivity {
 
         final Button submitLine = (Button) findViewById(R.id.submitLine);
 
-        final EditText editText = (EditText) findViewById(R.id.editSubmit);
+        editText = (EditText) findViewById(R.id.editSubmit);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference sendRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/1");
 
         final DatabaseReference numberRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
+
+
 
         numberRef.child("linenumber").addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,24 +80,22 @@ public class SubmitActivity extends AppCompatActivity {
                 sendRef.child(String.valueOf(pickupNumber)).child("uid").setValue(String.valueOf(pickupNumber));
                 numberRef.child("linenumber").setValue(pickupNumber + 1);
 
-
-
             }
         });
 
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    // do something, e.g. set your TextView here via .setText()
-                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    return true;
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    hideKeyboard();
                 }
-                return false;
             }
         });
 
+    }
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
     }
 }
