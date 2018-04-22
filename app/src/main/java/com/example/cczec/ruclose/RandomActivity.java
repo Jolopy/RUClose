@@ -5,7 +5,9 @@ import android.accounts.AccountManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
@@ -14,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
@@ -33,6 +37,12 @@ import java.util.regex.Pattern;
 public class RandomActivity extends AppCompatActivity {
 
     public int randomRange,random1,random2,random3,random4,random5,random6,random7,random8;
+    DatabaseReference mainRef;
+    DatabaseReference topRef;
+    DatabaseReference idsRef;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +81,21 @@ public class RandomActivity extends AppCompatActivity {
         final TextView randomsubmit2 =  (TextView) findViewById(R.id.randomsubmit2);
         final TextView randomsubmit4 =  (TextView) findViewById(R.id.randomsubmit4);
 
+        final ImageButton top1up = (ImageButton) findViewById(R.id.top1up);
+        final ImageButton top2up = (ImageButton) findViewById(R.id.top2up);
+        final ImageButton top3up = (ImageButton) findViewById(R.id.top3up);
+        final ImageButton top4up = (ImageButton) findViewById(R.id.top4up);
+        final ImageButton top5up = (ImageButton) findViewById(R.id.top5up);
+        final ImageButton top6up = (ImageButton) findViewById(R.id.top6up);
+        final ImageButton top7up = (ImageButton) findViewById(R.id.top7up);
+        final ImageButton top8up = (ImageButton) findViewById(R.id.top8up);
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
+        topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
+        idsRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/android_ids");
+        mainRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
+
 
         topRef.child("linenumber").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -123,6 +145,13 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top1.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top1.getTag());
+                result.put("line", top1.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -133,6 +162,13 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top2.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top2.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top2.getTag());
+                result.put("line", top2.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -143,6 +179,13 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top3.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top3.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top3.getTag());
+                result.put("line", top3.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -153,6 +196,13 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top4.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top4.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top4.getTag());
+                result.put("line", top4.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -163,6 +213,13 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top5.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top5.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top5.getTag());
+                result.put("line", top5.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -173,6 +230,13 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top6.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top6.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top6.getTag());
+                result.put("line", top6.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -183,6 +247,13 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top7.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top7.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top7.getTag());
+                result.put("line", top7.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -193,6 +264,13 @@ public class RandomActivity extends AppCompatActivity {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top8.getText().toString());
                 clipboard.setPrimaryClip(clipData);
+
+                initial_upvote(top8.getTag().toString());
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("uid", top8.getTag());
+                result.put("line", top8.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
             }
         });
 
@@ -257,11 +335,12 @@ public class RandomActivity extends AppCompatActivity {
         final TextView down8 = (TextView)findViewById(R.id.top8votesdown);
 
 
-        topRef.child(String.valueOf(random1)).child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random1)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top1.setText(value);
+                top1.setTag(dataSnapshot.child("uid").getValue().toString());
+                top1.setText(dataSnapshot.child("line").getValue().toString());
+
             }
 
             @Override
@@ -270,11 +349,11 @@ public class RandomActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child(String.valueOf(random2)).child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random2)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top2.setText(value);
+                top2.setTag(dataSnapshot.child("uid").getValue().toString());
+                top2.setText(dataSnapshot.child("line").getValue().toString());
             }
 
             @Override
@@ -283,11 +362,11 @@ public class RandomActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child(String.valueOf(random3)).child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random3)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top3.setText(value);
+                top3.setTag(dataSnapshot.child("uid").getValue().toString());
+                top3.setText(dataSnapshot.child("line").getValue().toString());
             }
 
             @Override
@@ -296,11 +375,11 @@ public class RandomActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child(String.valueOf(random4)).child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random4)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top4.setText(value);
+                top4.setTag(dataSnapshot.child("uid").getValue().toString());
+                top4.setText(dataSnapshot.child("line").getValue().toString());
             }
 
             @Override
@@ -309,11 +388,11 @@ public class RandomActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child(String.valueOf(random5)).child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random5)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top5.setText(value);
+                top5.setTag(dataSnapshot.child("uid").getValue().toString());
+                top5.setText(dataSnapshot.child("line").getValue().toString());
             }
 
             @Override
@@ -322,11 +401,11 @@ public class RandomActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child(String.valueOf(random6)).child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random6)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top6.setText(value);
+                top6.setTag(dataSnapshot.child("uid").getValue().toString());
+                top6.setText(dataSnapshot.child("line").getValue().toString());
             }
 
             @Override
@@ -335,11 +414,11 @@ public class RandomActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child(String.valueOf(random7)).child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random7)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top7.setText(value);
+                top7.setTag(dataSnapshot.child("uid").getValue().toString());
+                top7.setText(dataSnapshot.child("line").getValue().toString());
             }
 
             @Override
@@ -348,11 +427,11 @@ public class RandomActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child(String.valueOf(random8)).child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random8)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top8.setText(value);
+                top8.setTag(dataSnapshot.child("uid").getValue().toString());
+                top8.setText(dataSnapshot.child("line").getValue().toString());
             }
 
             @Override
@@ -575,6 +654,59 @@ public class RandomActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void initial_upvote(final String uid){
+
+        mainRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                int curUp = Integer.valueOf(snapshot.child("up").getValue().toString());
+                curUp += 1;
+
+
+                mainRef.child(uid).child("up").setValue(curUp);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+    private String get_user_id(){
+
+        String android_id = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        return android_id;
+    }
+
+    private void check_pending_items(){
+        String uid = get_user_id();
+        // send call to firebase
+        //System.out.println(uid);
+
+        idsRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                //System.out.println(snapshot.child("uid").getValue());
+                if(!(snapshot.child("uid").getValue() == null)){
+                    String uid = snapshot.child("uid").getValue().toString();
+                    String line = snapshot.child("line").getValue().toString();
+
+                    Intent myIntent = new Intent(RandomActivity.this, CheckInPopUp.class);
+                    myIntent.putExtra("uid",uid).putExtra("line",line).putExtra("get_user_id",get_user_id());
+                    startActivity(myIntent);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        check_pending_items();
     }
 
 }
