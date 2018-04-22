@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference topRef;
     DatabaseReference idsRef;
+    DatabaseReference mainRef;
 
     private String get_user_id(){
 
@@ -69,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void initial_upvote(String uid){
+
+        System.out.println(mainRef.orderByChild("uid").equalTo(uid));
+
+        //mainRef.child()
+    }
+
 
 
 
@@ -80,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/top_pickuplines");
         idsRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/android_ids");
+        mainRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
 
         final TextView top1 =  (TextView) findViewById(R.id.top1);
         final TextView top2 =  (TextView) findViewById(R.id.top2);
@@ -129,11 +139,41 @@ public class MainActivity extends AppCompatActivity {
         top1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+                mainRef.child(top1.getTag().toString()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        int curUp = Integer.valueOf(snapshot.child("up").getValue().toString());
+                        curUp += 1;
+
+                        System.out.println(curUp);
+                        mainRef.child(top1.getTag().toString()).child("up").setValue(curUp);
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+
+
+
+
                 Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
-                //get_email_list();
+
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("UID", top1.getTag());
+                result.put("line", top1.getText());
+
+                idsRef.child(get_user_id()).setValue(result);
+
+
+                //initial_upvote();
 
             }
         });
@@ -211,11 +251,12 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////////////////////////////////////
         // Get Text
         ///////////////////////////////////////////////////////////
-        topRef.child("1").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child("1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value =  dataSnapshot.getValue(String.class);
-                top1.setText(value);
+                top1.setText(dataSnapshot.child("line").getValue().toString());
+                top1.setTag(dataSnapshot.child("uid").getValue().toString());
+
             }
 
             @Override
