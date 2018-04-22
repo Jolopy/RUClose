@@ -36,6 +36,8 @@ public class CheckInPopUp extends AppCompatActivity {
                 int curDown = Integer.valueOf(snapshot.child("down").getValue().toString());
                 curDown += 1;
                 mainRef.child(uid).child("down").setValue(curDown);
+                mainRef.child(uid).child("up").setValue(curUp);
+
 
             }
             @Override
@@ -89,6 +91,34 @@ public class CheckInPopUp extends AppCompatActivity {
                 finish();
             }
         });
+
+        mainRef.child(uid).child("up").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int value = dataSnapshot.getValue(Integer.class);
+                upVotes.setText(String.valueOf(value));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        mainRef.child(uid).child("down").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int value = dataSnapshot.getValue(Integer.class);
+                downVotes.setText(String.valueOf(value));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
 
     }

@@ -22,9 +22,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:background="@android:color/darker_gray"
+            android:clickable="true"
             android:text="Top"
             android:textAlignment="center"
-            android:clickable="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
         <TextView
@@ -33,20 +34,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:background="@android:color/holo_green_light"
+            android:clickable="true"
             android:text="Random"
             android:textAlignment="center"
-            android:clickable="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
         <TextView
             android:id="@+id/submit4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:clickable="true"
             android:text="Submit"
             android:textAlignment="center"
-            android:clickable="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
     </LinearLayout>
 
     <TextView
