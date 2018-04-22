@@ -14,36 +14,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
-        <Button
+        android:layout_gravity="center">
+
+        <TextView
             android:id="@+id/submit1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Top" />
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Top"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        <Button
+        <TextView
             android:id="@+id/submit2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/submit3"
-            android:text="New" />
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Random"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-        <Button
-            android:id="@+id/submit3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/submit"
-            android:text="Random" />
-
-        <Button
+        <TextView
             android:id="@+id/submit4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/submit2"
-            android:text="Submit" />
+            android:layout_height="wrap_content" android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Submit"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
     </LinearLayout>
 
     <TextView

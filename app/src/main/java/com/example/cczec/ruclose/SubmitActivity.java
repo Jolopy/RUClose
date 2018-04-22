@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,10 +35,9 @@ public class SubmitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit);
 
-        final Button submitsubmit1 =  (Button) findViewById(R.id.submitsubmit1);
-        final Button submitsubmit2 =  (Button) findViewById(R.id.submitsubmit2);
-        final Button submitsubmit3 =  (Button) findViewById(R.id.submitsubmit3);
-        final Button submitsubmit4 =  (Button) findViewById(R.id.submitsubmit4);
+        final TextView submitsubmit1 =  (TextView) findViewById(R.id.submitsubmit1);
+        final TextView submitsubmit2 =  (TextView) findViewById(R.id.submitsubmit2);
+        final TextView submitsubmit4 =  (TextView) findViewById(R.id.submitsubmit4);
 
         final Button submitLine = (Button) findViewById(R.id.submitLine);
 
@@ -70,6 +70,21 @@ public class SubmitActivity extends AppCompatActivity {
             }
         });
 
+        submitsubmit2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SubmitActivity.this, RandomActivity.class));
+
+            }
+        });
+
+        submitsubmit4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         submitLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +94,8 @@ public class SubmitActivity extends AppCompatActivity {
                 sendRef.child(String.valueOf(pickupNumber)).child("down").setValue(0);
                 sendRef.child(String.valueOf(pickupNumber)).child("uid").setValue(String.valueOf(pickupNumber));
                 numberRef.child("linenumber").setValue(pickupNumber + 1);
+                Toast.makeText(SubmitActivity.this, "You have Submitted your Pick Up Line", Toast.LENGTH_SHORT).show();
+
 
             }
         });

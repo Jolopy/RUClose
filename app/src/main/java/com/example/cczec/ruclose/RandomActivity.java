@@ -26,10 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
 
-public class MainActivity extends AppCompatActivity {
+public class RandomActivity extends AppCompatActivity {
 
     private void get_email_list(){
         Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_random);
 
         final TextView top1 =  (TextView) findViewById(R.id.top1);
         final TextView top2 =  (TextView) findViewById(R.id.top2);
@@ -78,18 +79,22 @@ public class MainActivity extends AppCompatActivity {
         final TextView down8 = (TextView)findViewById(R.id.top8votesdown);
 
 
-        final TextView submit1 = (TextView)findViewById(R.id.submit1);
-        final TextView submit2 = (TextView)findViewById(R.id.submit2);
-        final TextView submit4 = (TextView)findViewById(R.id.submit4);
+        final TextView randomsubmit1 =  (TextView) findViewById(R.id.randomsubmit1);
+        final TextView randomsubmit2 =  (TextView) findViewById(R.id.randomsubmit2);
+        final TextView randomsubmit4 =  (TextView) findViewById(R.id.randomsubmit4);
 
-
-
-
-
+        final int random1 = new Random().nextInt(1000);
+        final int random2 = new Random().nextInt(1000);
+        final int random3 = new Random().nextInt(1000);
+        final int random4 = new Random().nextInt(1000);
+        final int random5 = new Random().nextInt(1000);
+        final int random6 = new Random().nextInt(1000);
+        final int random7 = new Random().nextInt(1000);
+        final int random8 = new Random().nextInt(1000);
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/top_pickuplines");
+        final DatabaseReference topRef = database.getReferenceFromUrl("https://ruclose-28b01.firebaseio.com/pickuplines");
 
 
         ///////////////////////////////////////////////////////////
@@ -99,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         top1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RandomActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top1.getText().toString());
                 clipboard.setPrimaryClip(clipData);
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         top2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RandomActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top2.getText().toString());
                 clipboard.setPrimaryClip(clipData);
@@ -120,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         top3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RandomActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top3.getText().toString());
                 clipboard.setPrimaryClip(clipData);
@@ -130,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         top4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RandomActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top4.getText().toString());
                 clipboard.setPrimaryClip(clipData);
@@ -140,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         top5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RandomActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top5.getText().toString());
                 clipboard.setPrimaryClip(clipData);
@@ -150,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         top6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RandomActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top6.getText().toString());
                 clipboard.setPrimaryClip(clipData);
@@ -160,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         top7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RandomActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top7.getText().toString());
                 clipboard.setPrimaryClip(clipData);
@@ -170,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         top8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RandomActivity.this, "Copied", Toast.LENGTH_SHORT).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clipData = android.content.ClipData.newPlainText("PlainText", top8.getText().toString());
                 clipboard.setPrimaryClip(clipData);
@@ -180,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////////////////////////////////////
         // Get Text
         ///////////////////////////////////////////////////////////
-        topRef.child("1").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random1)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value =  dataSnapshot.getValue(String.class);
@@ -193,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("2").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random2)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value =  dataSnapshot.getValue(String.class);
@@ -206,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("3").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random3)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value =  dataSnapshot.getValue(String.class);
@@ -219,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("4").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random4)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value =  dataSnapshot.getValue(String.class);
@@ -232,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("5").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random5)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value =  dataSnapshot.getValue(String.class);
@@ -245,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("6").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random6)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value =  dataSnapshot.getValue(String.class);
@@ -258,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("7").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random7)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value =  dataSnapshot.getValue(String.class);
@@ -271,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("8").child("line").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random8)).child("line").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value =  dataSnapshot.getValue(String.class);
@@ -287,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////////////////////////////////////
         // Up Votes
         ///////////////////////////////////////////////////////////
-        topRef.child("1").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random1)).child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -302,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        topRef.child("2").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random2)).child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -315,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("3").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random3)).child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -328,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("4").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random4)).child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -341,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("5").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random5)).child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -354,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("6").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random6)).child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -367,7 +372,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("7").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random7)).child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -380,7 +385,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("8").child("up").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random8)).child("up").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -395,7 +400,7 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////////////////////////////////////
         // Down Votes
         ///////////////////////////////////////////////////////////
-        topRef.child("1").child("down").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random1)).child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -408,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("2").child("down").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random2)).child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -421,7 +426,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("3").child("down").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random3)).child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -434,7 +439,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("4").child("down").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random4)).child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -447,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("5").child("down").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random5)).child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -460,7 +465,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("6").child("down").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random6)).child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -473,7 +478,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("7").child("down").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random7)).child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -486,7 +491,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        topRef.child("8").child("down").addValueEventListener(new ValueEventListener() {
+        topRef.child(String.valueOf(random8)).child("down").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int value = dataSnapshot.getValue(Integer.class);
@@ -499,18 +504,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        submit4.setOnClickListener(new View.OnClickListener() {
+        randomsubmit4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SubmitActivity.class));
+                startActivity(new Intent(RandomActivity.this, SubmitActivity.class));
+
+            }
+        });
+        randomsubmit1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RandomActivity.this, MainActivity.class));
 
             }
         });
 
-        submit2.setOnClickListener(new View.OnClickListener() {
+        randomsubmit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RandomActivity.class));
+                startActivity(new Intent(RandomActivity.this, RandomActivity.class));
 
             }
         });
