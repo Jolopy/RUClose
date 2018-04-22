@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="true"
-            android:text="first pick up line"
+            android:text="Loading..."
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -36,29 +36,29 @@
 
             <ImageButton
                 android:id="@+id/checkinup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/arrow_up_float" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/up"/>
 
             <TextView
                 android:id="@+id/checkinvotesup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="1" />
+                android:text="0" />
 
             <ImageButton
                 android:id="@+id/checkindown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/arrow_down_float" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/down"/>
 
             <TextView
                 android:id="@+id/checkinvotesdown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="2" />
+                android:text="0" />
 
         </LinearLayout>
 

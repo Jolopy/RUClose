@@ -62,10 +62,8 @@ public class MainActivity extends AppCompatActivity {
                     String line = snapshot.child("line").getValue().toString();
 
                     Intent myIntent = new Intent(MainActivity.this, CheckInPopUp.class);
-                    myIntent.putExtra("dui",uid).putExtra("line",line);
+                    myIntent.putExtra("uid",uid).putExtra("line",line).putExtra("get_user_id",get_user_id());
                     startActivity(myIntent);
-
-                    idsRef.child(get_user_id()).removeValue();
                 }
             }
             @Override
@@ -656,9 +654,5 @@ public class MainActivity extends AppCompatActivity {
         check_pending_items();
     }
 
-    @Override
-    public void onStart(){
-        super.onStart();
-        check_pending_items();
-    }
+
 }
